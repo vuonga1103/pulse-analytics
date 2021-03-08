@@ -1,1 +1,1 @@
-export { default } from "./uniqueBy";
+export { default } from './uniqueBy';
