@@ -13,18 +13,28 @@ import NoData from './NoData'
 
 const Container = styled.div({
   border: '1px solid black',
-  borderRadius: 4,
+  borderRadius: 25,
   padding: 24,
   margin: 24,
   background: '#E8EBEC',
+  position: 'relative',
+  minWidth: 650,
+  maxWidth: '80%',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  textAlign: 'center'
 })
 
-/*
-  TODOs:
-    1. Wire in our influencers display on line 44
-    2. Wire in a click handler to the button on line 43 that will sort 
-       our data by priority
-*/
+const Button = styled.button({
+  fontSize: 15,
+  marginBottom: 10,
+  padding: '5px 20px',
+  border: '2px solid #0926a2', 
+  color: '#0926a2',
+  fontWeight: 'bold',
+  borderRadius: "5px",
+  cursor: 'pointer',
+})
 
 const Influencers = () => {
   const [search, setSearch] = useState('')
@@ -64,9 +74,10 @@ const Influencers = () => {
 
   return (
     <Container>
-      <h1>Pulse Analytics Take Home Assignment ✏️ </h1>
+      <h1 id="title">Pulse Analytics <br/>Take Home Assignment</h1>
       <SearchBar setSearch={setSearch} search={search} />
-      <button onClick={() => setSorted(!sorted)}>Sort by Priority</button>
+      <Button onClick={() => setSorted(!sorted)} aria-label="sort button">Sort by Priority</Button>
+      
 
       {filteredData.length ? <Results data={filteredData} /> : <NoData />}
 

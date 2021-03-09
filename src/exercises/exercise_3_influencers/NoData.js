@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function NoData() {
     return (
-        <div>
+        <div style={{textAlign: 'center'}}>
             No result found.
         </div>
     )

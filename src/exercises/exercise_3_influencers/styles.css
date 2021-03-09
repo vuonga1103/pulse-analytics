@@ -1,13 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif;    
+    font-size: 13px;
+}
+
+#title {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+}
+
 #results {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    font-size: 13px;
 }
 
 #results td, #result th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
+    word-wrap: break-word;
+    max-width: 200px;   
 }
 
 #results tbody tr:nth-child(odd) {
@@ -20,7 +32,8 @@
 
 #results thead {
     padding: 0 12px;
-    text-align: left;
     background-color: #0926a2;
     color: white;
+    text-align: justify center;
+    font-size: larger;
 }
