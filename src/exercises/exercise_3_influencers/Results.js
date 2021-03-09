@@ -1,7 +1,5 @@
 import React from 'react'
 
-// - Create a display that renders the influencers data with the corresponding keys: `["member", "influencerType", "indicationCategory", "affiliation", "affiliationPosition", "primaryState", "priority"]`. Those keys should have corresponding headers/labels that read `["Member", "Type", "Category", "Affiliation", "Title", "State", "Priority"]` respectively.
-
 export default function Results({ data }) {
     const tableHeaders = Object.keys(data[0]);
 
@@ -33,11 +31,3 @@ export default function Results({ data }) {
     )
 }
 
-{/* <table style={tableStyle}>
-   <tbody>
-       <tr style={rowStyle}>
-           <td style={leftColumnStyle}>Battery</td>
-           <td><StatsBar/></td>
-        </tr>
-   </tbody>
-</table */}

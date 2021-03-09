@@ -8,6 +8,8 @@ import uniqueBy from '../exercise_1_uniqueBy'
 import filterBy from '../exercise_2_filterBy'
 
 import SearchBar from './SearchBar'
+import Results from './Results'
+import NoData from './NoData'
 
 const Container = styled.div({
   border: '1px solid black',
@@ -26,21 +28,48 @@ const Container = styled.div({
 
 const Influencers = () => {
   const [search, setSearch] = useState('')
-
+  const [sorted, setSorted] = useState(false)
   const uniqueData = uniqueBy(data, 'member') // use the uniqueBy util to unique our data by the "member" values
-
   const filteredData = filterBy(uniqueData, search, [
     'indicationCategory',
     'affiliation',
     'affiliationPosition',
   ]) // use the filterBy util to filter our data by the given search term
 
+  if (sorted) {
+    filteredData.sort((a, b) => {
+      return getNumericPriority(b) - getNumericPriority(a);
+  
+      function getNumericPriority(obj) {
+        let numericPriority;
+  
+        switch (obj.priority) {
+          case 'High':
+            numericPriority = 2;
+            break;
+          case 'Medium':
+            numericPriority = 1;
+            break;
+          case 'Low':
+            numericPriority = 0;
+            break;
+          default:
+            numericPriority = 0;
+            break;
+        }
+        return numericPriority;
+      }
+    })
+  }
+
   return (
     <Container>
       <h1>Pulse Analytics Take Home Assignment ✏️ </h1>
       <SearchBar setSearch={setSearch} search={search} />
-      <button>Sort by Priority</button>
-      {/* <YourComponentHere data={filteredData} /> */}
+      <button onClick={() => setSorted(!sorted)}>Sort by Priority</button>
+
+      {filteredData.length ? <Results data={filteredData} /> : <NoData />}
+
     </Container>
   )
 }
