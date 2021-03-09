@@ -76,7 +76,7 @@ const Influencers = () => {
     <Container>
       <h1 id="title">Pulse Analytics <br/>Take Home Assignment</h1>
       <SearchBar setSearch={setSearch} search={search} />
-      <Button onClick={() => setSorted(!sorted)} aria-label="sort button">Sort by Priority</Button>
+      <Button onClick={() => setSorted(!sorted)} aria-label="sort button">{sorted ? 'Unsort' : 'Sort By Priority'}</Button>
       {filteredData.length ? <Results data={filteredData} /> : <NoData />}
     </Container>
   )
