@@ -1,10 +1,13 @@
 import React from 'react'
 
 export default function Results({ data }) {
-    const tableHeaders = Object.keys(data[0]);
+    const tableHeaders = Object.keys(data[0]).map(header => {
+        return header.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); })
+    }) // Split header names by camelcase and make uppercase
 
     const getTableHeaders = () => {
-        return tableHeaders.map((header, i) => <td key={i}>{header}</td>);
+        let headerTds = tableHeaders.map((header, i) => <td key={i}>{header}</td>);
+        return <tr>{headerTds}</tr>
     }
 
     const getRows = () => {
@@ -17,13 +20,10 @@ export default function Results({ data }) {
     }
 
     return (
-        <table>
+        <table id="results">
             <thead>
-                <tr>
-                    {getTableHeaders()}
-                </tr>    
+                {getTableHeaders()}
             </thead>
-            
             <tbody>
                 {getRows()}
             </tbody>
