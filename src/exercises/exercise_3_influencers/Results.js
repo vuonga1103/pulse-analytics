@@ -1,9 +1,8 @@
 import React from 'react'
 
 export default function Results({ data }) {
-    const tableHeaders = Object.keys(data[0]).map(header => {
-        return header.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); })
-    }) // Split header names by camelcase and make uppercase
+    
+    const tableHeaders = ["Member", "Type", "Category", "Affiliation", "Title", "State", "Priority"];
 
     const getTableHeaders = () => {
         let headerTds = tableHeaders.map((header, i) => <td key={i}>{header}</td>);
